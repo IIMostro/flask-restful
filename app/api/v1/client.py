@@ -6,6 +6,7 @@ __author__ = 'ilmostro'
 from flask import request
 
 from app.libs.enums import ClientTypeEnum
+from app.libs.error_code import BizException
 from app.libs.redprint import Redprint
 from app.models.user import User
 from app.validators.forms import ClientForm, UserEmailForm
@@ -22,10 +23,12 @@ def register():
             ClientTypeEnum.EMAIL: __register_user_by_email
         }
         pormise[form.type.data]()
+    else:
+        raise BizException
     return 'success'
 
 
 def __register_user_by_email():
-    form = UserEmailForm(request.json)
+    form = UserEmailForm(data=request.json)
     if form.validate():
         User.register_by_email(form.nickname.data, form.account.data, form.secret.data)

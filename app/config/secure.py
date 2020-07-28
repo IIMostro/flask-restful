@@ -1,3 +1,5 @@
 
-SQLALCHEMY_DATABASE_URL = 'mysql+cymysql://root:123456@localhost/ginger'
+SQLALCHEMY_DATABASE_URI = 'mysql+cymysql://root:123456@192.168.205.20/ginger'
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+SQLALCHEMY_COMMIT_TEARDOWN = True
 SECRET_KEY = 'adfadgagegadadfadgadfadsfadf'
