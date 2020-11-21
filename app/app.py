@@ -19,5 +19,6 @@ def create_app():
     app.config.from_object('app.config.secure')
     # noinspection PyTypeChecker
     registry_blueprints(app)
+
     registry_plugin(app)
     return app
